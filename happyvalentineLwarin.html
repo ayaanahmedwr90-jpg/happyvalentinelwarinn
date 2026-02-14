@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>From Here to Thailand | Happy Valentine's Day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #f97316;
+      --accent-soft: #facc15;
+      --accent-soft2: #fb7185;
+      --text: #f9fafb;
+      --text-soft: #e5e7eb;
+      --muted: #9ca3af;
+      --border-soft: rgba(251,191,36,0.55);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% -10%, #fb923c 0, #1f2937 40%, #020617 80%, #000 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -50%;
+      background:
+        radial-gradient(circle at 15% -10%, rgba(251,191,36,0.4), transparent 60%),
+        radial-gradient(circle at 85% 120%, rgba(248,113,113,0.35), transparent 65%);
+      opacity: 0.9;
+      z-index: -2;
+      animation: bgMove 40s linear infinite alternate;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% -20%, rgba(248,250,252,0.2), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+      z-index: -1;
+    }
+
+    @keyframes bgMove {
+      from { transform: translate3d(0,0,0); }
+      to   { transform: translate3d(-6%,10%,0); }
+    }
+
+    /* Top navigation */
+    .nav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: rgba(15,23,42,0.9);
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.85);
+    }
+    .nav-title {
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .nav-dots {
+      display: flex;
+      gap: 6px;
+      margin-left: 8px;
+    }
+    .nav-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      background: linear-gradient(135deg, #ef4444, #facc15, #1d4ed8);
+      box-shadow: 0 0 10px rgba(248,250,252,0.9);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      margin-left: 12px;
+      flex-wrap: wrap;
+    }
+    .nav-btn {
+      border: none;
+      outline: none;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg,
+        rgba(250,204,21,0.18),
+        rgba(248,113,113,0.24));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .nav-btn span {
+      position: relative;
+    }
+    .nav-btn:hover {
+      color: #f9fafb;
+      transform: translateY(-1px);
+    }
+    .nav-btn:hover::before { opacity: 1; }
+    .nav-btn:active { transform: translateY(0); }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.5; }
+    }
+
+    /* Floating Thai lanterns background */
+    .floating-lanterns {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .floating-lanterns span {
+      position: absolute;
+      width: 16px;
+      height: 26px;
+      border-radius: 4px 4px 6px 6px;
+      background: linear-gradient(to bottom,
+        rgba(254,249,195,0.95),
+        rgba(251,191,36,0.95),
+        rgba(248,113,113,0.9));
+      box-shadow:
+        0 0 15px rgba(251,191,36,0.9),
+        0 20px 30px rgba(0,0,0,0.6);
+      transform: translate3d(0,110vh,0) scale(0.9);
+      animation: floatLantern 18s linear infinite;
+      opacity: 0.7;
+    }
+    .floating-lanterns span::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 3px;
+      right: 3px;
+      height: 4px;
+      border-radius: 0 0 6px 6px;
+      background: radial-gradient(circle at 50% 0, rgba(0,0,0,0.35), transparent 80%);
+      opacity: 0.9;
+    }
+
+    @keyframes floatLantern {
+      0% {
+        transform: translate3d(0,110vh,0) scale(0.85);
+        opacity: 0;
+      }
+      10% { opacity: 0.9; }
+      90% { opacity: 0.9; }
+      100% {
+        transform: translate3d(0,-120vh,0) scale(1.05);
+        opacity: 0;
+      }
+    }
+
+    .floating-lanterns span:nth-child(1)  { left: 6%;  animation-duration: 23s; animation-delay: -2s;  }
+    .floating-lanterns span:nth-child(2)  { left: 18%; animation-duration: 27s; animation-delay: -9s;  }
+    .floating-lanterns span:nth-child(3)  { left: 30%; animation-duration: 21s; animation-delay: -5s;  }
+    .floating-lanterns span:nth-child(4)  { left: 42%; animation-duration: 29s; animation-delay: -11s; }
+    .floating-lanterns span:nth-child(5)  { left: 54%; animation-duration: 25s; animation-delay: -7s;  }
+    .floating-lanterns span:nth-child(6)  { left: 66%; animation-duration: 31s; animation-delay: -13s; }
+    .floating-lanterns span:nth-child(7)  { left: 76%; animation-duration: 22s; animation-delay: -4s;  }
+    .floating-lanterns span:nth-child(8)  { left: 86%; animation-duration: 28s; animation-delay: -10s; }
+    .floating-lanterns span:nth-child(9)  { left: 48%; animation-duration: 33s; animation-delay: -15s; }
+    .floating-lanterns span:nth-child(10) { left: 12%; animation-duration: 26s; animation-delay: -6s;  }
+
+    /* Buttons */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(15,23,42,0.8);
+      color: var(--text);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      overflow: hidden;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
+    }
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #fef9c3 0, #fbbf24 40%, #f97316 80%);
+      color: #1f2937;
+      box-shadow:
+        0 16px 40px rgba(0,0,0,0.9),
+        0 0 30px rgba(251,191,36,0.8);
+    }
+    .btn-ghost {
+      background: rgba(15,23,42,0.9);
+      border-color: rgba(250,204,21,0.7);
+      color: #facc15;
+    }
+    .btn-small {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+    .btn span.icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+    .btn:hover {
+      transform: translateY(-2px) translateZ(0);
+      box-shadow: 0 14px 40px rgba(0,0,0,1);
+    }
+    .btn:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow: 0 6px 26px rgba(0,0,0,1);
+    }
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -40%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(248,250,252,0.8), transparent 70%);
+      opacity: 0;
+      transform: skewX(-22deg);
+      transition: opacity 0.4s ease, left 0.35s ease;
+    }
+    .btn:hover::after {
+      opacity: 0.6;
+      left: 140%;
+    }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear;
+      background: rgba(248,250,252,0.7);
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    @keyframes rippleAnim {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* Flying hearts (hug effect) */
+    .flying-heart {
+      position: fixed;
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%, 0);
+      color: #fb7185;
+      text-shadow: 0 0 10px rgba(248,113,113,0.9);
+      pointer-events: none;
+      animation: heartUp 2.6s ease-out forwards;
+      z-index: 999;
+    }
+    @keyframes heartUp {
+      0%   { transform: translate(-50%, 0) scale(0.8); opacity: 1; }
+      100% { transform: translate(-50%, -180px) scale(1.6); opacity: 0; }
+    }
+
+    /* Hero section */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 8vw 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4vw;
+      position: relative;
+      z-index: 1;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background:
+        radial-gradient(circle at 10% -10%, rgba(251,191,36,0.45), transparent 60%),
+        radial-gradient(circle at 100% 120%, rgba(248,113,113,0.4), transparent 65%);
+      opacity: 0.75;
+      filter: blur(6px);
+      z-index: -1;
+    }
+    .hero-content {
+      max-width: 540px;
+    }
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(251,191,36,0.8);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-soft2);
+      margin-bottom: 10px;
+    }
+    .hero-highlight-heart {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fefce8, #fbbf24 40%, #f97316 80%);
+      box-shadow: 0 0 10px rgba(251,191,36,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-highlight-heart::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 5px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15,23,42,0.95), rgba(15,23,42,0.6));
+    }
+
+    .tiny-text {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 4vw, 3.4rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+    .hero h1 span.name {
+      background: linear-gradient(130deg, #facc15, #fb7185, #fed7aa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 22px rgba(251,191,36,0.9);
+    }
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-soft);
+      max-width: 460px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .hero-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+      opacity: 0.9;
+    }
+    .hero-note strong {
+      color: var(--accent-soft2);
+      font-weight: 500;
+    }
+
+    .hero-card-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1300px;
+    }
+    .hero-card {
+      width: min(340px, 80vw);
+      aspect-ratio: 3 / 4;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 0 0, rgba(253,224,71,0.5), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(15,23,42,1), #020617);
+      padding: 1px;
+      box-shadow:
+        0 25px 80px rgba(0,0,0,0.95),
+        0 0 40px rgba(251,191,36,0.6);
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease-out;
+      cursor: pointer;
+    }
+    .hero-card-glow {
+      position: absolute;
+      inset: -60px;
+      background:
+        radial-gradient(circle at 0 0, rgba(251,191,36,0.4), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(248,113,113,0.4), transparent 65%);
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0.9;
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      border-radius: 25px;
+      background:
+        radial-gradient(circle at 0 0, rgba(254,243,199,0.24), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(15,23,42,1), #020617);
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.7s ease;
+    }
+    .hero-card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-face {
+      position: absolute;
+      inset: 0;
+      padding: 20px 20px 22px;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-face-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(249,250,251,0.85);
+    }
+    .card-tag {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(253,224,71,0.9);
+      font-size: 10px;
+    }
+    .photo-frame {
+      flex: 1;
+      margin: 14px 0 10px;
+      border-radius: 18px;
+      padding: 3px;
+      background: radial-gradient(circle at 0 0, rgba(254,249,195,0.8), rgba(251,191,36,0.5));
+      box-shadow: inset 0 0 18px rgba(254,249,195,0.35);
+    }
+    .photo-frame-inner {
+      height: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-frame-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.1) contrast(1.1);
+    }
+    .card-caption {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .card-caption strong {
+      color: var(--accent-soft2);
+    }
+    .card-footer {
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(249,250,251,0.9);
+    }
+    .card-pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fefce8, #22c55e);
+      box-shadow: 0 0 12px rgba(34,197,94,0.95);
+      animation: heartBeat 1.4s ease-in-out infinite;
+    }
+    @keyframes heartBeat {
+      0%,100% { transform: scale(1); }
+      25% { transform: scale(1.3); }
+      50% { transform: scale(0.94); }
+      75% { transform: scale(1.2); }
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      text-align: left;
+      padding: 22px 22px 24px;
+    }
+    .card-back h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .card-back p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-soft);
+    }
+    .card-back small {
+      display: block;
+      margin-top: 14px;
+      font-size: 11px;
+      color: rgba(249,250,251,0.85);
+    }
+    .card-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(249,250,251,0.7);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      pointer-events: none;
+    }
+    .card-hint-icon {
+      font-size: 14px;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(249,250,251,0.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .scroll-arrow {
+      width: 16px;
+      height: 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(253,224,71,0.8);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 3px;
+    }
+    .scroll-arrow-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(249,250,251,0.95);
+      animation: scrollDot 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollDot {
+      0% { transform: translateY(0); opacity: 1; }
+      70% { transform: translateY(10px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 0; }
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 8vw 100px;
+      position: relative;
+      z-index: 1;
+    }
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0 10%;
+      margin: 0 auto;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 0 0, rgba(248,250,252,0.03), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(251,191,36,0.06), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    .section-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .section-header {
+      margin-bottom: 30px;
+    }
+    .section-kicker {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-soft2);
+      margin-bottom: 8px;
+    }
+    .section-kicker.small {
+      font-size: 11px;
+      margin-bottom: 4px;
+      opacity: 0.9;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.1rem);
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 580px;
+    }
+    .section.dark {
+      background:
+        radial-gradient(ellipse at top, rgba(15,23,42,0.98), rgba(3,7,18,1));
+      box-shadow: inset 0 20px 60px rgba(0,0,0,0.95);
+    }
+    .section.dark::before {
+      background:
+        radial-gradient(circle at 0 0, rgba(251,191,36,0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(248,113,113,0.12), transparent 65%);
+    }
+
+    /* Distance section */
+    .distance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+      align-items: stretch;
+    }
+    .distance-card {
+      position: relative;
+      border-radius: 20px;
+      padding: 14px 16px 16px;
+      background: radial-gradient(circle at 0 0, rgba(254,243,199,0.2), rgba(15,23,42,0.95));
+      border: 1px solid rgba(251,191,36,0.7);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
+    }
+    .distance-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(248,250,252,0.9);
+      margin-bottom: 4px;
+    }
+    .distance-name {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+    .distance-time {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .distance-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .distance-strip {
+      margin-top: 18px;
+      border-radius: 999px;
+      border: 1px dashed rgba(251,191,36,0.7);
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(248,250,252,0.8);
+      position: relative;
+      overflow: hidden;
+    }
+    .distance-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34,197,94,0.95);
+    }
+    .distance-dot.you {
+      background: #f97316;
+      box-shadow: 0 0 10px rgba(249,115,22,0.95);
+    }
+    .distance-plane {
+      position: absolute;
+      top: 50%;
+      left: -10%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      animation: flyPlane 8s linear infinite;
+    }
+    @keyframes flyPlane {
+      0% { left: -10%; opacity: 0; transform: translateY(-50%) scale(0.9); }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 110%; opacity: 0; transform: translateY(-50%) scale(1.1); }
+    }
+
+    /* Message strip (chat/envelope) */
+    .message-strip {
+      margin-top: 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(248,250,252,0.85);
+      position: relative;
+      overflow: hidden;
+    }
+    .message-icon {
+      font-size: 16px;
+    }
+    .message-line {
+      flex: 1;
+      height: 1px;
+      background-image: linear-gradient(to right,
+        rgba(148,163,184,0.3),
+        rgba(251,191,36,0.9),
+        rgba(148,163,184,0.3));
+    }
+    .message-envelope {
+      position: absolute;
+      top: 50%;
+      left: -10%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      animation: flyMsg 7s ease-in-out infinite;
+    }
+    @keyframes flyMsg {
+      0% { left: -10%; opacity: 0; transform: translateY(-50%) scale(0.9); }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 110%; opacity: 0; transform: translateY(-50%) scale(1.1); }
+    }
+
+    /* Story timeline */
+    .timeline {
+      position: relative;
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 4px;
+      bottom: 4px;
+      width: 2px;
+      background: linear-gradient(to bottom,
+        rgba(250,250,249,0.6),
+        rgba(251,191,36,0.8));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 26px;
+      padding-left: 18px;
+    }
+    .timeline-item:last-child { margin-bottom: 4px; }
+    .timeline-dot {
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fefce8, #fbbf24);
+      box-shadow: 0 0 16px rgba(251,191,36,0.9);
+    }
+    .timeline-content {
+      background: rgba(15,23,42,0.98);
+      border-radius: 14px;
+      padding: 10px 14px 12px;
+      border: 1px solid rgba(251,191,36,0.6);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.85);
+    }
+    .timeline-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(248,250,252,0.9);
+      margin-bottom: 6px;
+    }
+    .timeline-title {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .timeline-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Reasons */
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .reason-card {
+      perspective: 1000px;
+    }
+    .reason-inner {
+      position: relative;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 0 0, rgba(254,243,199,0.18), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(248,113,113,0.3), rgba(15,23,42,1));
+      border: 1px solid rgba(251,191,36,0.7);
+      padding: 1px;
+      transform-style: preserve-3d;
+      transition:
+        transform 0.5s ease,
+        box-shadow 0.4s ease,
+        border-color 0.3s ease;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.95);
+    }
+    .reason-card:hover .reason-inner {
+      transform: rotateY(12deg) translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.98);
+      border-color: rgba(248,113,113,0.9);
+    }
+    .reason-face {
+      padding: 14px 14px 16px;
+      background: radial-gradient(circle at 0 0, rgba(15,23,42,0.9), rgba(3,7,18,1));
+      border-radius: 17px;
+    }
+    .reason-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(248,250,252,0.95);
+      margin-bottom: 6px;
+    }
+    .reason-title {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .reason-text {
+      font-size: 13px;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    /* Game */
+    .game-box {
+      margin-top: 10px;
+      background:
+        radial-gradient(circle at 0 0, rgba(251,191,36,0.25), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(248,113,113,0.28), rgba(15,23,42,1));
+      border-radius: 24px;
+      border: 1px solid rgba(251,191,36,0.8);
+      padding: 16px 16px 18px;
+      box-shadow: 0 22px 60px rgba(0,0,0,1);
+    }
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin-bottom: 8px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .game-counter {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+    }
+    .game-counter span.label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(254,243,199,0.95);
+      display: block;
+    }
+    .game-counter span.value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    #heartCanvas {
+      width: 100%;
+      max-height: 420px;
+      min-height: 260px;
+      background: transparent;
+      border-radius: 18px;
+      border: 1px solid rgba(251,191,36,0.7);
+      display: block;
+      margin: 8px 0 10px;
+    }
+    .game-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .game-message {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Letter */
+    .letter-card {
+      margin-top: 12px;
+      position: relative;
+      max-width: 780px;
+    }
+    .letter-card::before {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 26px;
+      background: linear-gradient(120deg,
+        rgba(251,191,36,0.6),
+        rgba(248,250,252,0.85),
+        rgba(248,113,113,0.6));
+      opacity: 0.9;
+      filter: blur(6px);
+      z-index: -1;
+    }
+    .letter-paper {
+      border-radius: 24px;
+      background: radial-gradient(circle at 0 0, #fefce8, #fffbeb);
+      padding: 20px 22px 22px;
+      color: #1f2937;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+    .letter-paper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 7px;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(251,191,36,0.9) 0px,
+        rgba(251,191,36,0.9) 6px,
+        rgba(248,113,113,0.9) 6px,
+        rgba(248,113,113,0.9) 12px
+      );
+      opacity: 0.85;
+    }
+    #love-letter {
+      font-size: 14px;
+      line-height: 1.8;
+      white-space: pre-line;
+      min-height: 140px;
+    }
+    .letter-signature {
+      font-size: 14px;
+      margin-top: 18px;
+    }
+    .letter-signature span {
+      font-weight: 600;
+      color: #b91c1c;
+    }
+
+    /* Gallery */
+    .gallery-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+    }
+    .gallery-row::-webkit-scrollbar {
+      height: 6px;
+    }
+    .gallery-row::-webkit-scrollbar-thumb {
+      background: rgba(251,191,36,0.75);
+      border-radius: 999px;
+    }
+    .gallery-card {
+      min-width: 210px;
+      max-width: 260px;
+      background: rgba(15,23,42,0.98);
+      border-radius: 18px;
+      padding: 8px 8px 10px;
+      border: 1px solid rgba(251,191,36,0.8);
+      box-shadow: 0 18px 40px rgba(0,0,0,1);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.25s ease;
+    }
+    .gallery-card:hover {
+      transform: translateY(-6px) rotate3d(1,-1,0,8deg);
+      box-shadow: 0 30px 70px rgba(0,0,0,1);
+      border-color: rgba(248,113,113,0.95);
+    }
+    .gallery-photo {
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .gallery-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,23,42,0.5), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-card:hover .gallery-photo::after { opacity: 1; }
+    .gallery-photo img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-caption {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 22px 8vw 30px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .footer span {
+      color: var(--accent-soft2);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column-reverse;
+        padding-top: 110px;
+      }
+      .hero-content {
+        text-align: left;
+      }
+      .hero-buttons {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        padding: 6px 12px;
+      }
+      .nav-title {
+        display: none;
+      }
+      .hero {
+        padding: 110px 6vw 80px;
+      }
+      .section {
+        padding: 70px 6vw 80px;
+      }
+      .game-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .gallery-card {
+        min-width: 190px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio files -->
+  <audio id="bg-music" src="https://cdn.discordapp.com/attachments/1437612172615094322/1457431760060289085/Bruno_Mars_-_Talking_To_The_Moon_Official_Lyric_Video_1.mp3?ex=69915f59&is=69900dd9&hm=1a034c760d57e3f82b33918cb0e550d49cd0b2091c386e31941833953d691d6b&" loop></audio>
+  <audio id="click-sound" src="click.mp3"></audio>
+  <audio id="pop-sound" src="pop.mp3"></audio>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-title">Love Across to Thailand</div>
+    <div class="nav-dots">
+      <span class="nav-dot"></span>
+      <span class="nav-dot"></span>
+      <span class="nav-dot"></span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-btn" data-scroll="#hero"><span>Home</span></button>
+      <button class="nav-btn" data-scroll="#distance"><span>Distance</span></button>
+      <button class="nav-btn" data-scroll="#story"><span>Story</span></button>
+      <button class="nav-btn" data-scroll="#reasons"><span>Reasons</span></button>
+      <button class="nav-btn" data-scroll="#game"><span>Game</span></button>
+      <button classnav-btn" data-scroll="#letter"><span>Letter</span></button>
+      <button class="nav-btn" data-scroll="#gallery"><span>Gallery</span></button>
+    </div>
+  </nav>
+
+  <!-- Floating lanterns -->
+  <div class="floating-lanterns">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-highlight">
+        <div class="hero-highlight-heart"></div>
+        <span>From my sky to your sky </span>
+      </div>
+      <div class="tiny-text">VALENTINE'S DAY • LONG DISTANCE BUT ONE HEART</div>
+      <h1>
+        Happy Valentine's Day,<br>
+        <span class="name"> My Little Warin </span>
+      </h1>
+      <p class="hero-subtitle">
+        Somewhere in Thailand there is a girl I love .
+        This little website is my way of sending you a sky full of lanterns, hugs and “I miss you”s
+        that travel all the way from me to you.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" id="play-music-btn">
+          <span class="icon">▶</span>
+          <span>Play Our Song</span>
+        </button>
+        <button class="btn btn-ghost" data-scroll="#game">
+          <span class="icon">🏮</span>
+          <span>Play lantern game</span>
+        </button>
+      </div>
+      <p class="hero-note">
+        You are there, I am here, but our love is standing right in the middle,
+        holding both of us together.
+      </p>
+    </div>
+
+    <div class="hero-card-wrapper">
+      <div class="hero-card" id="photo-card">
+        <div class="hero-card-glow"></div>
+        <div class="card-inner">
+          <div class="card-face card-front">
+            <div class="card-face-top">
+              <span>My favorite view in Thailand</span>
+              <span class="card-tag">Your eyes</span>
+            </div>
+            <div class="photo-frame">
+              <div class="photo-frame-inner">
+                <img src="https://media.discordapp.net/attachments/1395636458639065190/1472222449826402434/WhatsApp_Image_2026-02-14_at_7.25.36_PM.jpeg?ex=6991c980&is=69907800&hm=2311f85fa55bcc81cdedd36048451beb8c0a4d00559ee67ba7f955353eaf4021&=&format=webp" alt="Her beautiful eyes">
+              </div>
+            </div>
+            <p class="card-caption">
+              Her beautiful eyes.
+The eyes I fall in love with every single day. Tap the card to read a tiny secret.
+Zoom into your magic
+.
+            </p>
+            <div class="card-footer">
+              <span>Locked on you, always</span>
+              <span class="card-pulse-dot"></span>
+            </div>
+          </div>
+          <div class="card-face card-back">
+            <h3>A Thailand sky secret</h3>
+            <p>
+              When I miss you, I look up at the sky and imagine we are both standing under
+              the same moon. One day, I will be in Thailand too, standing right next to you,
+              holding your hand instead of just my phone.
+            </p>
+            <small>
+              Until that day comes, this little screen is my way of keeping you close.
+            </small>
+          </div>
+        </div>
+        <div class="card-hint">
+          <span class="card-hint-icon">↻</span>
+          <span>Tap to flip</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint" data-scroll="#distance">
+      <span>Scroll down</span>
+      <div class="scroll-arrow">
+        <div class="scroll-arrow-dot"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Distance section -->
+  <section class="section" id="distance">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">Long distance magic</div>
+        <h2 class="section-title">Two places, one shared sky</h2>
+        <p class="section-subtitle">
+          You are in Thailand. I am somewhere else. But every second, our hearts beat under the
+          same sky. Here is a tiny dashboard that belongs only to us.
+        </p>
+      </div>
+
+      <div class="distance-grid">
+        <div class="distance-card">
+          <div class="distance-label">You</div>
+          <div class="distance-name">Your time in Thailand</div>
+          <div class="distance-time" id="time-thailand">--:--</div>
+          <div class="distance-note">
+            Wherever you go, whatever you do there, I hope you feel my love walking beside you. I hope you are always safe 
+          </div>
+        </div>
+        <div class="distance-card">
+          <div class="distance-label">Me</div>
+          <div class="distance-name">My time over here</div>
+          <div class="distance-time" id="time-here">--:--</div>
+          <div class="distance-note">
+            Different clocks, different cities, but every moment my heart for you .
+          </div>
+        </div>
+      </div>
+
+      <div class="distance-strip">
+        <span class="distance-dot"></span>
+        <span>Me</span>
+        <span style="flex:1;height:1px;background:linear-gradient(to right,rgba(148,163,184,0.3),rgba(251,191,36,0.9));margin:0 6px;"></span>
+        <span>You in Thailand</span>
+        <span class="distance-dot you"></span>
+        <div class="distance-plane">✈</div>
+      </div>
+
+      <p style="margin-top:8px;font-size:12px;color:var(--muted);">
+        Right now, our clocks are about <strong id="time-diff">--</strong> hours apart,
+        but my heart is always on your time.
+      </p>
+
+      <div class="message-strip">
+        <span class="message-icon">📱</span>
+        <div class="message-line"></div>
+        <span class="message-icon">📱</span>
+        <div class="message-envelope">✉</div>
+        <span style="margin-left:6px;">Messages flying between us</span>
+      </div>
+
+      <button id="hugButton" class="btn btn-ghost btn-small" style="margin-top:10px;">
+        <span class="icon">❤</span>
+        <span>Send a virtual hug</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="section" id="story">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">Our story</div>
+        <h2 class="section-title">How we found each other across countries</h2>
+        <p class="section-subtitle">
+          Two dots on a map. Two phones in two places. Somehow, all of that turned into
+          one love story that I never want to end.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span>First hello</span>
+              <span>Two locations</span>
+            </div>
+            <div class="timeline-title">The message that crossed the sea</div>
+            <p class="timeline-text">
+              Okey , Our meeting was so funny . For a girl . Hahahaha , Sorry for that . We became friends . You said, ‘I am dear,’ not your dear ( now U are my Dear) but I didn't thought that was your nickname. That moment marked the beginning of a beautiful journey between us on Discord , watsapp something simple yet unforgettable. From that day, every conversation felt a little more special, and that’s how our story  began .
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span>First confession </span>
+              <span>Different time zones</span>
+            </div>
+            <div class="timeline-title">When sleep didn't matter anymore</div>
+            <p class="timeline-text">
+              Don’t feel bad, baby. I cried a lot that day because you almost wanted to leave me completely. But that night, in the end, we fixed everything. That was the first time you told me ‘I love you.’ From that moment, I became completely sure that you truly love me. That became another one of the best days of my life, spending it with you. 
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-meta">
+              <span>Right now</span>
+              <span>Same heart</span>
+            </div>
+            <div class="timeline-title">Loving you from far, dreaming of close</div>
+            <p class="timeline-text">
+             Right now, everything between us is so beautiful and happy. We are really happy together. Because of you, I have changed a lot. We talk almost all the time on calls and play games together a lot. Now I even love the types of games you like. We talk so much on calls, yet it still feels like there’s always more to say. Sometimes I hurt you, and I’m really sorry for that. I hope we always stay this happy and smiling like this. I love you .
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reasons -->
+  <section class="section dark" id="reasons">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">Reasons I love you</div>
+        <h2 class="section-title">A few lights in our long-distance sky</h2>
+        <p class="section-subtitle">
+          I could write forever and still not finish the list. Here are just a few reasons
+          my heart chose you — and keeps choosing you, even from far away.
+        </p>
+      </div>
+
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-inner">
+            <div class="reason-face">
+              <div class="reason-label">Reason #01</div>
+              <div class="reason-title">You make distance feel softer</div>
+              <p class="reason-text">
+                Even on the days when I miss you so much it hurts, your messages, your voice,
+                your little “I’m here” make everything feel gentler. You turn kilometers into
+                something my heart can handle.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-inner">
+            <div class="reason-face">
+              <div class="reason-label">Reason #02</div>
+              <div class="reason-title">You share your Thai world with me</div>
+              <p class="reason-text">
+                Every photo you send from Thailand — the streets, the food, the sky —
+                makes me feel like I’m walking right beside you. You didn’t just let me into
+                your life, you let me into your world.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-inner">
+            <div class="reason-face">
+              <div class="reason-label">Reason #03</div>
+              <div class="reason-title">You choose us, even when it's hard</div>
+              <p class="reason-text">
+                Long distance isn’t easy. There are days when we are tired, busy, or sad.
+                But you still stay. You still care. You still believe in “us”. That courage
+                and loyalty are some of the most beautiful things about you.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-inner">
+            <div class="reason-face">
+              <div class="reason-label">Reason #04</div>
+              <div class="reason-title">You feel like home across borders</div>
+              <p class="reason-text">
+               You are honest about your feelings, even when they are not pretty or easy. 
+You don’t only stay for me in good times, you also stay when things are complicated. 
+You can find small pieces of happiness in tiny things ,you find beauty on everyone. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Game -->
+  <section class="section dark" id="game">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">Thai–inspired mini game</div>
+        <h2 class="section-title">Lanterns of Love</h2>
+        <p class="section-subtitle">
+          Imagine we’re at a lantern festival in Thailand together. Lanterns, lotus flowers,
+          and hearts float through the warm night sky. Tap them before they fade
+          and see how much love you can collect for us.
+        </p>
+      </div>
+
+      <div class="game-box">
+        <div class="game-header">
+          <div>
+            <div class="section-kicker small">Tap lanterns, lotus & hearts</div>
+            <div style="font-size:13px;color:var(--muted);max-width:480px;">
+              Lanterns are worth <strong>3</strong> points, lotus flowers <strong>4</strong>,
+              and hearts <strong>2</strong>. You have <strong>35 seconds</strong> to light up
+              this Thai night sky with our love.
+            </div>
+          </div>
+          <div class="game-counter">
+            <div>
+              <span class="label">Score</span>
+              <span class="value" id="gameScore">0</span>
+            </div>
+            <div>
+              <span class="label">Time</span>
+              <span class="value" id="gameTime">35</span>
+            </div>
+            <div>
+              <span class="label">Best</span>
+              <span class="value" id="gameBest">0</span>
+            </div>
+          </div>
+        </div>
+
+        <canvas id="heartCanvas"></canvas>
+
+        <div class="game-footer">
+          <button class="btn btn-primary btn-small" id="startGameBtn">
+            <span class="icon">🏮</span>
+            <span>Start game</span>
+          </button>
+          <p class="game-message" id="gameMessage">
+            Every point is another “I love you” flying across the distance to you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Letter -->
+  <section class="section" id="letter">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">My letter to you</div>
+        <h2 class="section-title">From here to your heart in Thailand</h2>
+        <p class="section-subtitle">
+          These words are my way of reaching out from my side of the world and wrapping you
+          in a hug on yours.
+        </p>
+      </div>
+
+      <div class="letter-card">
+        <div class="letter-paper">
+          <p id="love-letter">Dear Little Warin,
+
+Sometimes I look at the map, find Thailand, and smile because that is where you are. I didn't knew much about Thailand . Now I know for you .  Somehow, a place that once felt so far away has become the most special spot in my whole world  simply because it’s home to you.
+
+Thank you for loving me across distance, time zones, and busy working days. Thank you for every message, every call, every little moment you give me from your life over there. You make my ordinary days feel like a happiest day.
+
+I know it’s not always easy, but I wanna try . One day I will see you . Nami and Yuki and our family . . It will be “us”, in the same city, under the same sky, holding the same sunset with our own hands. 9 Just writing this made me happy . 
+
+Until that day, I’ll keep sending my love across the sea, across the clouds, across every mile  straight to you. 
+
+Happy Valentine’s Day, my love. From here, all the way to Thailand, and I love you so much . 
+Forever yours,
+
+
+          <p class="letter-signature">
+            <span> Almash</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ========== MY FINAL ACT OF LOVE SECTION ========== -->
+
+
+    <!-- ছোট্ট তিনটা creative লাইন, চাইলে না বদলালেও থাকবে -->
+    <div style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+      <div class="distance-card" style="border-radius:18px;padding:10px 12px;">
+        <div class="distance-label">For every kilometer</div>
+        <div class="distance-name" style="font-size:14px;margin-bottom:4px;">I send you a thought</div>
+        <p style="font-size:12px;color:#e5e7eb;">
+          Every time I think about the distance, I also think about how lucky I am that somewhere
+          far away, there is you — and somehow, you are mine.
+        </p>
+      </div>
+      <div class="distance-card" style="border-radius:18px;padding:10px 12px;">
+        <div class="distance-label">For every timezone</div>
+        <div class="distance-name" style="font-size:14px;margin-bottom:4px;">I send you a wish</div>
+        <p style="font-size:12px;color:#e5e7eb;">
+          Different clocks don’t scare me anymore, because wherever the time is, my favorite moment
+          is always the one where I get to say “I love you” to you.
+        
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ========== END MY FINAL ACT OF LOVE SECTION ========== -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>
+      Made with love that travels to Thailand by <span>[Warin]</span> for <span>[Almash]</span> · Happy Valentine's Day
+    </p>
+  </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('[data-scroll]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        var sel = el.getAttribute('data-scroll');
+        var target = document.querySelector(sel);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Click ripple + sound
+    function playClickSound() {
+      var audio = document.getElementById('click-sound');
+      if (!audio) return;
+      audio.currentTime = 0;
+      audio.play().catch(function(){});
+    }
+    document.querySelectorAll('.btn, .nav-btn, .scroll-hint').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        var rect = this.getBoundingClientRect();
+        var ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        var size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top  = (e.clientY - rect.top  - size / 2) + 'px';
+        this.appendChild(ripple);
+        setTimeout(function(){ ripple.remove(); }, 600);
+        playClickSound();
+      });
+    });
+
+    // Background music toggle
+    (function() {
+      var bg = document.getElementById('bg-music');
+      var btn = document.getElementById('play-music-btn');
+      if (!bg || !btn) return;
+      var playing = false;
+      btn.addEventListener('click', function() {
+        if (!playing) {
+          bg.play().then(function() {
+            playing = true;
+            btn.innerHTML = '<span class="icon">\u23F8</span><span>Pause Our Song</span>';
+          }).catch(function(){});
+        } else {
+          bg.pause();
+          playing = false;
+          btn.innerHTML = '<span class="icon">\u25B6</span><span>Play Our Song</span>';
+        }
+      });
+    })();
+
+    // 3D tilt + flip card
+    (function() {
+      var card = document.getElementById('photo-card');
+      if (!card) return;
+      var maxTilt = 12;
+      card.addEventListener('mousemove', function(e) {
+        var r = card.getBoundingClientRect();
+        var x = e.clientX - r.left;
+        var y = e.clientY - r.top;
+        var cx = r.width / 2;
+        var cy = r.height / 2;
+        var ry = ((x - cx) / cx) * maxTilt;
+        var rx = -((y - cy) / cy) * maxTilt;
+        card.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+      card.addEventListener('click', function() {
+        card.classList.toggle('flipped');
+      });
+    })();
+
+    // Typewriter for letter
+    (function() {
+      var el = document.getElementById('love-letter');
+      if (!el) return;
+      var full = (el.textContent || '').trim();
+      el.textContent = '';
+      var i = 0, speed = 30;
+      function type() {
+        if (i <= full.length) {
+          el.textContent = full.slice(0, i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      function start() {
+        if (el.getAttribute('data-started')) return;
+        el.setAttribute('data-started', 'true');
+        type();
+      }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              start(); io.disconnect();
+            }
+          });
+        }, { threshold: 0.3 });
+        io.observe(el);
+      } else {
+        window.addEventListener('load', start);
+      }
+    })();
+
+    // Live time for Thailand & here + difference
+    (function() {
+      var thEl = document.getElementById('time-thailand');
+      var hereEl = document.getElementById('time-here');
+      var diffEl = document.getElementById('time-diff');
+      if (!thEl || !hereEl) return;
+
+      function updateTimes() {
+        var now = new Date();
+        try {
+          var th = now.toLocaleTimeString([], {
+            hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Bangkok'
+          });
+          thEl.textContent = th;
+        } catch(e) {
+          thEl.textContent = '--:--';
+        }
+        var here = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        hereEl.textContent = here;
+
+        if (diffEl) {
+          var localOffset = -now.getTimezoneOffset() / 60; // e.g. +6 for BD
+          var bangkokOffset = 7; // UTC+7
+          var diff = Math.round(Math.abs(bangkokOffset - localOffset));
+          diffEl.textContent = diff;
+        }
+      }
+      updateTimes();
+      setInterval(updateTimes, 1000);
+    })();
+
+    // Send virtual hug (flying hearts)
+    (function() {
+      var btn = document.getElementById('hugButton');
+      var popSound = document.getElementById('pop-sound');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        for (var i = 0; i < 5; i++) {
+          (function() {
+            var heart = document.createElement('span');
+            heart.className = 'flying-heart';
+            heart.textContent = '❤';
+            var startX = (window.innerWidth / 2 - 80) + Math.random() * 160;
+            var startY = window.innerHeight - 80 + Math.random() * 40;
+            heart.style.left = startX + 'px';
+            heart.style.top = startY + 'px';
+            heart.style.fontSize = (18 + Math.random() * 10) + 'px';
+            document.body.appendChild(heart);
+            heart.addEventListener('animationend', function() {
+              heart.remove();
+            });
+          })();
+        }
+        if (popSound) {
+          popSound.currentTime = 0;
+          popSound.play().catch(function(){});
+        }
+      });
+    })();
+
+    // Lanterns of Love game
+    (function() {
+      var canvas = document.getElementById('heartCanvas');
+      var scoreEl = document.getElementById('gameScore');
+      var bestEl  = document.getElementById('gameBest');
+      var timeEl  = document.getElementById('gameTime');
+      var startBtn = document.getElementById('startGameBtn');
+      var msgEl = document.getElementById('gameMessage');
+      var popSound = document.getElementById('pop-sound');
+      if (!canvas || !scoreEl || !timeEl || !startBtn) return;
+
+      var ctx = canvas.getContext('2d');
+      var objects = [];
+      var particles = [];
+      var bgStars = [];
+      var score = 0;
+      var bestScore = 0;
+      var timeLeft = 35;
+      var gameRunning = false;
+      var timerId = null;
+      var lastTimestamp = 0;
+      var globalTime = 0;
+      var spawnTimer = 0;
+      var baseSpawnInterval = 0.8;
+      var spawnInterval = baseSpawnInterval;
+      var difficulty = 0;
+
+      function initStars() {
+        bgStars = [];
+        for (var i = 0; i < 80; i++) {
+          bgStars.push({
+            x: Math.random(),
+            y: Math.random() * 0.7,
+            radius: 0.5 + Math.random() * 1.4,
+            twinkle: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      function resizeCanvas() {
+        var rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height || 320;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+      initStars();
+
+      function createObject() {
+        var w = canvas.width || 300;
+        var typeRand = Math.random();
+        var type = typeRand < 0.5 ? 'lantern' : (typeRand < 0.8 ? 'lotus' : 'heart');
+        var size = 16 + Math.random() * 18;
+        var x = Math.random() * (w - size * 2) + size;
+        var y = -size - 20;
+        var speed = 45 + difficulty * 15 + Math.random() * 28;
+        var wobble = 0.5 + Math.random() * 0.8;
+        var spin = Math.random() * Math.PI * 2;
+        var rotSpeed = (-1 + Math.random() * 2) * 0.6;
+        var value = type === 'lantern' ? 3 : (type === 'lotus' ? 4 : 2);
+        objects.push({
+          x: x, y: y, size: size, speed: speed,
+          wobble: wobble, offset: Math.random() * Math.PI * 2,
+          spin: spin, rotSpeed: rotSpeed, type: type, value: value
+        });
+      }
+
+      function createBurst(x, y, type) {
+        var count = 10 + Math.floor(Math.random() * 10);
+        var baseColor =
+          type === 'lantern' ? '251, 191, 36' :
+          type === 'lotus'   ? '244, 114, 182' :
+                               '248, 250, 252';
+        for (var i = 0; i < count; i++) {
+          var angle = Math.random() * Math.PI * 2;
+          var spd = 40 + Math.random() * 90;
+          particles.push({
+            x: x, y: y,
+            vx: Math.cos(angle) * spd,
+            vy: Math.sin(angle) * spd,
+            life: 0,
+            maxLife: 0.6 + Math.random() * 0.4,
+            size: 1.5 + Math.random() * 2.5,
+            color: baseColor
+          });
+        }
+      }
+
+      function drawHeart(o) {
+        var s = o.size;
+        ctx.save();
+        ctx.translate(o.x, o.y);
+        ctx.rotate(o.spin);
+        var grad = ctx.createRadialGradient(
+          -s * 0.3, -s * 0.3, s * 0.1,
+          0, 0, s * 1.4
+        );
+        grad.addColorStop(0, 'rgba(255,255,255,0.95)');
+        grad.addColorStop(0.4, '#fb7185');
+        grad.addColorStop(1, '#e11d48');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.moveTo(0, -s * 0.3);
+        ctx.bezierCurveTo(-s, -s, -s * 1.3, 0, 0, s);
+        ctx.bezierCurveTo(s * 1.3, 0, s, -s, 0, -s * 0.3);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function drawLantern(o) {
+        var s = o.size;
+        ctx.save();
+        ctx.translate(o.x, o.y);
+        ctx.rotate(o.spin * 0.1);
+        var w = s * 0.8;
+        var h = s * 1.2;
+        var grad = ctx.createLinearGradient(0, -h/2, 0, h/2);
+        grad.addColorStop(0, 'rgba(254,249,195,0.98)');
+        grad.addColorStop(0.4, 'rgba(252,211,77,0.98)');
+        grad.addColorStop(1, 'rgba(248,113,113,0.95)');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.moveTo(-w/2, -h/2);
+        ctx.lineTo(w/2, -h/2);
+        ctx.lineTo(w/2 * 0.9, h/2);
+        ctx.lineTo(-w/2 * 0.9, h/2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = 'rgba(0,0,0,0.18)';
+        ctx.beginPath();
+        ctx.moveTo(-w/2 * 0.9, h/2);
+        ctx.lineTo(w/2 * 0.9, h/2);
+        ctx.lineTo(0, h/2 + s*0.22);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,0.75)';
+        ctx.beginPath();
+        ctx.ellipse(0, -h/4, w*0.18, h*0.12, 0, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function drawLotus(o) {
+        var s = o.size;
+        ctx.save();
+        ctx.translate(o.x, o.y);
+        ctx.rotate(o.spin * 0.2);
+        var petals = 7;
+        var outer = s * 0.9;
+        var inner = s * 0.3;
+        ctx.beginPath();
+        for (var i = 0; i <= petals; i++) {
+          var angle = (Math.PI * 2 / petals) * i - Math.PI / 2;
+          var x = Math.cos(angle) * outer;
+          var y = Math.sin(angle) * outer * 0.6;
+          ctx.quadraticCurveTo(0, 0, x, y);
+        }
+        var grad = ctx.createRadialGradient(
+          0, 0, inner * 0.2,
+          0, 0, outer * 1.1
+        );
+        grad.addColorStop(0, 'rgba(254,249,195,0.95)');
+        grad.addColorStop(0.3, '#fb7185');
+        grad.addColorStop(1, '#be185d');
+        ctx.fillStyle = grad;
+        ctx.fill();
+        ctx.fillStyle = 'rgba(15,23,42,0.6)';
+        ctx.beginPath();
+        ctx.ellipse(0, outer*0.4, outer*0.9, outer*0.25, 0, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function update(delta) {
+        globalTime += delta;
+        spawnTimer += delta;
+        if (spawnTimer >= spawnInterval) {
+          spawnTimer = 0;
+          createObject();
+          difficulty += 0.05;
+          spawnInterval = Math.max(0.3, baseSpawnInterval - difficulty * 0.03);
+        }
+        var height = canvas.height || 320;
+        for (var i = objects.length - 1; i >= 0; i--) {
+          var o = objects[i];
+          o.y += o.speed * delta;
+          o.x += Math.sin(o.offset + o.y * 0.04) * o.wobble;
+          o.spin += o.rotSpeed * delta;
+          if (o.y - o.size > height + 40) {
+            objects.splice(i, 1);
+          }
+        }
+        for (var j = particles.length - 1; j >= 0; j--) {
+          var p = particles[j];
+          p.x += p.vx * delta;
+          p.y += p.vy * delta;
+          p.vy += 40 * delta;
+          p.life += delta;
+          if (p.life >= p.maxLife) particles.splice(j, 1);
+        }
+      }
+
+      function render() {
+        var w = canvas.width || 300;
+        var h = canvas.height || 320;
+        ctx.clearRect(0, 0, w, h);
+
+        var g = ctx.createLinearGradient(0, 0, 0, h);
+        g.addColorStop(0, 'rgba(15,23,42,1)');
+        g.addColorStop(0.4, 'rgba(15,23,42,0.98)');
+        g.addColorStop(0.75, 'rgba(234,88,12,0.6)');
+        g.addColorStop(1, 'rgba(0,0,0,1)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.fillStyle = 'rgba(15,23,42,0.95)';
+        ctx.beginPath();
+        ctx.moveTo(0, h * 0.68);
+        ctx.quadraticCurveTo(w * 0.25, h * 0.6, w * 0.45, h * 0.68);
+        ctx.quadraticCurveTo(w * 0.55, h * 0.64, w * 0.7, h * 0.7);
+        ctx.quadraticCurveTo(w * 0.85, h * 0.72, w, h * 0.68);
+        ctx.lineTo(w, h);
+        ctx.lineTo(0, h);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.save();
+        ctx.translate(w * 0.4, h * 0.6);
+        ctx.fillStyle = 'rgba(234,179,8,0.7)';
+        ctx.beginPath();
+        ctx.moveTo(-35, 18);
+        ctx.lineTo(0, -18);
+        ctx.lineTo(35, 18);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        bgStars.forEach(function(s) {
+          var alpha = 0.35 + 0.65 * Math.sin(globalTime * 2 + s.twinkle);
+          ctx.fillStyle = 'rgba(248,250,252,' + alpha.toFixed(2) + ')';
+          ctx.beginPath();
+          ctx.arc(s.x * w, s.y * h, s.radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        var waterGrad = ctx.createLinearGradient(0, h * 0.7, 0, h);
+        waterGrad.addColorStop(0, 'rgba(15,23,42,0.9)');
+        waterGrad.addColorStop(0.4, 'rgba(30,64,175,0.6)');
+        waterGrad.addColorStop(1, 'rgba(0,0,0,1)');
+        ctx.fillStyle = waterGrad;
+        ctx.fillRect(0, h * 0.7, w, h * 0.3);
+
+        objects.forEach(function(o) {
+          if (o.type === 'lantern') drawLantern(o);
+          else if (o.type === 'lotus') drawLotus(o);
+          else drawHeart(o);
+        });
+        particles.forEach(function(p) {
+          var alpha = 1 - (p.life / p.maxLife);
+          ctx.fillStyle = 'rgba(' + p.color + ',' + alpha.toFixed(2) + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      function loop(timestamp) {
+        if (!gameRunning) return;
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        var delta = (timestamp - lastTimestamp) / 1000;
+        if (delta > 0.05) delta = 0.05;
+        lastTimestamp = timestamp;
+        update(delta);
+        render();
+        requestAnimationFrame(loop);
+      }
+
+      function startGame() {
+        if (gameRunning) return;
+        gameRunning = true;
+        objects = [];
+        particles = [];
+        score = 0;
+        timeLeft = 35;
+        difficulty = 0;
+        spawnInterval = baseSpawnInterval;
+        spawnTimer = 0;
+        globalTime = 0;
+        lastTimestamp = 0;
+
+        scoreEl.textContent = score;
+        timeEl.textContent = timeLeft;
+        if (bestEl) bestEl.textContent = bestScore;
+        msgEl.textContent = 'Tap the floating lanterns, lotus flowers, and hearts before they disappear.';
+
+        startBtn.disabled = true;
+        startBtn.style.opacity = '0.8';
+
+        if (timerId) clearInterval(timerId);
+        timerId = setInterval(function() {
+          if (!gameRunning) return;
+          timeLeft--;
+          if (timeLeft <= 0) {
+            timeLeft = 0;
+            endGame();
+          }
+          timeEl.textContent = timeLeft;
+        }, 1000);
+
+        requestAnimationFrame(loop);
+      }
+
+      function endGame() {
+        if (!gameRunning) return;
+        gameRunning = false;
+        clearInterval(timerId);
+        timerId = null;
+        startBtn.disabled = false;
+        startBtn.style.opacity = '1';
+
+        if (score > bestScore) {
+          bestScore = score;
+          if (bestEl) bestEl.textContent = bestScore;
+        }
+
+        var msg;
+        if (score >= 80) {
+          msg = 'You scored ' + score + ' points. That’s a whole festival of love, brighter than any Thai lanterns.';
+        } else if (score >= 45) {
+          msg = 'You scored ' + score + ' points. More than enough to reach you in Thailand and back to me.';
+        } else {
+          msg = 'You scored ' + score + ' points. No matter the score, you already have all of my heart.';
+        }
+        msgEl.textContent = msg;
+      }
+
+      canvas.addEventListener('click', function(e) {
+        if (!gameRunning) return;
+        var rect = canvas.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        for (var i = objects.length - 1; i >= 0; i--) {
+          var o = objects[i];
+          var dx = x - o.x;
+          var dy = y - o.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < o.size * 0.9) {
+            objects.splice(i, 1);
+            score += o.value;
+            scoreEl.textContent = score;
+            createBurst(o.x, o.y, o.type);
+            if (popSound) {
+              popSound.currentTime = 0;
+              popSound.play().catch(function(){});
+            }
+            break;
+          }
+        }
+      });
+
+      startBtn.addEventListener('click', startGame);
+    })();
+  </script>
+</body>
+</html>
